@@ -3,14 +3,14 @@ package ru.otus.javabasic.homework6;
 import java.util.Objects;
 
 public class Account {
-    private int id;
-    private Client client;
-    private int count; //How many coins are on the account
+    private final int id;
+    private final Client client;
+    private final int coins; //How many coins are on the account
 
-    public Account(int id, Client client, int count) {
+    public Account(int id, Client client, int coins) {
         this.id = id;
         this.client = client;
-        this.count = count;
+        this.coins = coins;
     }
 
     public Account(int id, Client client) {
@@ -19,9 +19,7 @@ public class Account {
 
     @Override
     public String toString() {
-        return "{" +
-                "account id='" + id + '\'' +
-                '}';
+        return "Account id: '" + id + '\'' + ". " + this.coins + " coins on the account.";
     }
 
     public int getId() {

@@ -28,7 +28,7 @@ public class Main {
 
         System.out.println("----");
         System.out.println("Checking method findClient:");
-        System.out.println(account1 + " registered to: \n     " + bank.findClient(account1));
+        System.out.println(account1 + " Registered to: " + bank.findClient(account1));
 
 
     }

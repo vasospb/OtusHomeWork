@@ -48,8 +48,6 @@ public class Bank {
                 System.out.println("  " + a);
             }
         }
-
-
     }
 
     public Set getAccounts(Client client) {

@@ -5,11 +5,11 @@ import java.util.Objects;
 import java.util.Set;
 
 public class Client {
-    private int id;
-    private String name;
-    private String sureName;
-    private int age;
-    private Set<Account> accountsHashSet = new HashSet();
+    private final int id;
+    private final String name;
+    private final String sureName;
+    private final int age;
+    private final Set<Account> accountsHashSet = new HashSet();
 
     //Constructors
     public Client(String name, String sureName, int age) {
@@ -20,18 +20,6 @@ public class Client {
         this.id = Bank.clientSequence;
         System.out.println(this + " created.");
     }
-
-//    public Client(String name, String sureName, int age, boolean createAccount)  {
-//        this.name = name;
-//        this.sureName = sureName;
-//        this.age = age;
-//        System.out.println(this + " created.");
-//        if (createAccount){
-//            System.out.print("    ");
-//            createAccount();
-//        }
-//    }
-
 
     public Account createAccount() {
         return this.createAccount(0);
