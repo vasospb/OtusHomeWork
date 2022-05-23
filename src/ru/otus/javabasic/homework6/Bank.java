@@ -8,7 +8,7 @@ public class Bank {
 
     private final String name;
     private final String id;
-    public Map<Client, Set<Account>> clientHashMap = new HashMap<>();
+    private final Map<Client, Set<Account>> clientHashMap = new HashMap<>();
 
 
     public Bank(String id, String name) {

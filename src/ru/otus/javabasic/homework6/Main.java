@@ -35,6 +35,5 @@ public class Main {
         Client client4 = new Client("Vasily", "Chigaev", 43);
         bank.addClient(client4);
         bank.printClients();
-        System.out.println(bank.clientHashMap);
     }
 }
