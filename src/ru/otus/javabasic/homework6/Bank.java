@@ -8,7 +8,7 @@ public class Bank {
 
     private String name;
     private String id;
-    private Map<Client, Set> clientHashMap = new HashMap<>();
+    public Map<Client, Set> clientHashMap = new HashMap<>();
 
 
     public Bank(String id, String name) {
@@ -42,10 +42,14 @@ public class Bank {
         System.out.println("\nClients list in bank: " + this.name);
         for (Map.Entry<Client, Set> item : clientHashMap.entrySet()) {
             c++;
-            System.out.println(c + ":    Client id: " + item.getKey() + ".");
-            for (Object a :                                  //как указать конкретный тип возвращаемого из getValue
-                    item.getValue()) {
-                System.out.println("  " + a);
+            System.out.println(c + ":    Client id: " + item.getKey() + ".  ");
+            if (item.getValue() != null) {
+                for (Object a :                                  //как указать конкретный тип возвращаемого из getValue
+                        item.getValue()) {
+                    System.out.println("  " + a);
+                }
+            } else {
+                System.out.println("  No accounts for the client");
             }
         }
     }

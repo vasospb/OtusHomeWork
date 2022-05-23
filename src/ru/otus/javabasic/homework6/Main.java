@@ -10,6 +10,8 @@ public class Main {
         Client client1 = new Client("Vasily", "Chigaev", 43);
         Client client2 = new Client("Ivan", "Petrov", 17);
         //  Client client3 = new Client("Petr", "Ivanov", 17, true);
+
+
         System.out.println("-------------");
 
         //Add clients to the bank
@@ -30,6 +32,8 @@ public class Main {
         System.out.println("Checking method findClient:");
         System.out.println(account1 + " Registered to: " + bank.findClient(account1));
 
-
+        Client client4 = new Client("Vasily", "Chigaev", 43);
+        bank.addClient(client4);
+        bank.printClients();
     }
 }
