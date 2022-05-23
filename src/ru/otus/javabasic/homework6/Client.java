@@ -9,7 +9,7 @@ public class Client {
     private final String name;
     private final String sureName;
     private final int age;
-    private final Set<Account> accountsHashSet = new HashSet();
+    private final Set<Account> accountsHashSet = new HashSet<>();
 
     //Constructors
     public Client(String name, String sureName, int age) {
@@ -49,11 +49,13 @@ public class Client {
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
         return id == client.id && age == client.age && name.equals(client.name) && sureName.equals(client.sureName);
+        //return age == client.age && name.equals(client.name) && sureName.equals(client.sureName);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(id, name, sureName, age);
+        //return Objects.hash(name, sureName, age);
     }
 
 }

@@ -6,9 +6,9 @@ public class Bank {
     static int accountSequence = 100;
     public static int clientSequence;
 
-    private String name;
-    private String id;
-    public Map<Client, Set> clientHashMap = new HashMap<>();
+    private final String name;
+    private final String id;
+    public Map<Client, Set<Account>> clientHashMap = new HashMap<>();
 
 
     public Bank(String id, String name) {
@@ -22,8 +22,14 @@ public class Bank {
 
     public void addClient(Client client) {
         //      Account account = new Account(Bank.accountSequence, client);
-        clientHashMap.put(client, null);
-        System.out.println("New client: " + client + " was registered in a Bank: " + this.name);
+        if (!clientHashMap.containsKey(client)) {
+
+            clientHashMap.put(client, new HashSet<>());
+            System.out.println("New client: " + client + " was registered in a Bank: " + this.name);
+        } else {
+            System.out.println("Client already exist. Use existing client: " + client);
+        }
+
     }
 
     public Account createAccount(Client client) {
@@ -38,15 +44,19 @@ public class Bank {
 
 
     public void printClients() {
-        int c = 0;
+        int i = 0;
         System.out.println("\nClients list in bank: " + this.name);
-        for (Map.Entry<Client, Set> item : clientHashMap.entrySet()) {
-            c++;
-            System.out.println(c + ":    Client id: " + item.getKey() + ".  ");
+        for (Map.Entry<Client, Set<Account>> item : clientHashMap.entrySet()) {
+            i++;
+            System.out.println(i + ":    Client id: " + item.getKey() + ".  ");
             if (item.getValue() != null) {
-                for (Object a :                                  //как указать конкретный тип возвращаемого из getValue
-                        item.getValue()) {
-                    System.out.println("  " + a);
+                if (item.getValue().size() == 0) {
+                    System.out.println("  No accounts for the client");
+                } else {
+                    for (Account a :                                  //как указать конкретный тип возвращаемого из getValue
+                            item.getValue()) {
+                        System.out.println("  " + a);
+                    }
                 }
             } else {
                 System.out.println("  No accounts for the client");
@@ -54,7 +64,7 @@ public class Bank {
         }
     }
 
-    public Set getAccounts(Client client) {
+    public Set<Account> getAccounts(Client client) {
         return clientHashMap.get(client);
     }
 
@@ -66,7 +76,7 @@ public class Bank {
         return id;
     }
 
-    public Map<Client, Set> getClientHashMap() {
+    public Map<Client, Set<Account>> getClientHashMap() {
         return clientHashMap;
     }
 }
