@@ -1,27 +1,19 @@
-package ru.otus.javabasic.homework6;
-
-import javax.sql.DataSource;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.sql.Connection;
+package ru.otus.javabasic.homework7;
 
 public class ResourceLevel {
 
-    public String readFile(String fileName) {
-        String status;
+    public void readFile() {
         try {
-            System.out.println("Пытаемся прочитать файл "+ fileName +" с сетевого ресурса.....");
-            throw new FileNotFoundException();
+            //  System.out.println("Пытаемся прочитать файл "+ fileName +" с сетевого ресурса.....");
+            throw new Exception();
             //status =  "Success read";   //выводим данные если прочитали из файла
         } catch (Exception e) {
-            status = "Во время чтения файла " + fileName + " произошла ошибка.";
-            System.out.println(e);
-
-        } finally {
-            System.out.println("Закрываем все открытые ресурсы...");
+            e.printStackTrace(System.out);
         }
+//        finally {
+//            System.out.println("Закрываем все открытые ресурсы...");
+//        }
         System.out.println("Ошибку подавили. Программа работает дальше ...");
-        return status;
     }
 
 
@@ -36,29 +28,35 @@ public class ResourceLevel {
         }
     }
 
-    public void doAnyWork() {
-        ClassLoader classLoader = this.getClass().getClassLoader();
+    public void doAnyWork()  {
+        System.out.println("Call method doAnyWork");
         try (MyDataSource conn = new MyDataSource()) {
-// Работаем с conn и stream
-        } catch (Exception e){
-// Обрабатываем исключения
-        } finally {
-// И даже можем тут, что-то сделать
+            System.out.println("doAnyWork start...");
+            throw new Error("BIG CRASH!");
+        } catch (Error e) {
+            System.out.println("doAnyWork catch. Выбрасываем error.");
+            throw e;
         }
-// Но к этому моменту conn и stream будут уже закрыты
+        finally {
+            System.out.println("doAnyWork Finaly");
+        }
+        //System.out.println("Конец");
     }
 }
 
-class MyDataSource implements AutoCloseable{
-
-    @Override
-    public void close() throws Exception {
-        System.out.println("метод заглушка.");
-        System.out.println("закрываем соединение");
+class MyDataSource implements AutoCloseable {
+    public MyDataSource() {
+        System.out.println(getConnection());
     }
 
-    public Str getConnection() {
-        System.out.println("Запускаем getConnection ....");
+    @Override
+    public void close()  {
+        System.out.println("Метод заглушка.");
+        System.out.println("Закрываем соединение");
+    }
+
+    private String getConnection() {
+        System.out.println("Инициализация соединения");
         return "Connection open";
     }
 }

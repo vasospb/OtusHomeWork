@@ -1,28 +1,31 @@
-package ru.otus.javabasic.homework6;
+package ru.otus.javabasic.homework7;
 
 public class ApplicationLevel {
-    private  String data1;
-    private  String data2;
-    private ResourceLevel resources;
+    private boolean data1;
+    private String data2;
+    private final ResourceLevel resources;
 
     public ApplicationLevel() {
         this.resources = new ResourceLevel();
     }
 
-    public String read(String file){
-        data1 = resources.readFile(file);
-        return data1;
+    public void read() {
+        resources.readFile();
     }
 
-   public String readDb(String dbName){
-       try {
-           data2 = resources.readFromDataBase("Oracle");
-       } catch (Exception e) {
-           //  System.out.println(e);
-           throw new RuntimeException(e);
-       }
-       return data2;
-   }
+    public String readDb(String dbName) {
+        try {
+            data2 = resources.readFromDataBase("Oracle");
+        } catch (Exception e) {
+            System.out.println("Проблемы подключения в БазеДанных " + e);
+            e.printStackTrace(System.out);
+        }
+        return data2;
+    }
+
+    public void readFromResource() {
+        resources.doAnyWork();
+    }
 
 
 }
