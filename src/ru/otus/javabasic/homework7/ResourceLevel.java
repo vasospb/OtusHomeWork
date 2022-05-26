@@ -1,13 +1,21 @@
 package ru.otus.javabasic.homework7;
 
+import java.io.File;
+import java.util.Scanner;
+
 public class ResourceLevel {
 
     public void readFile() {
         try {
-            //  System.out.println("Пытаемся прочитать файл "+ fileName +" с сетевого ресурса.....");
-            throw new Exception();
-            //status =  "Success read";   //выводим данные если прочитали из файла
+            File myObj = new File("myFilename.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                System.out.println(data);
+            }
+            myReader.close();
         } catch (Exception e) {
+            System.out.println("An error occurred.");
             e.printStackTrace(System.out);
         }
 //        finally {
