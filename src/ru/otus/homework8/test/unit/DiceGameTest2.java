@@ -8,7 +8,7 @@ import ru.otus.homework8.game.Player;
 
 public class DiceGameTest2 {
     public void testDiceGame() {
-        String scenario = "Тест на равенство";
+        String scenario = "Тест на равенство имен";
         try {
             Game game = new Game(new DiceImpl(), new GameWinnerConsolePrinter());
             Player p1 = new Player("Игорь");

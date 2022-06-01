@@ -8,6 +8,6 @@ public class Demo {
         Dice dice = new DiceImpl();
         GameWinnerPrinter winnerPrinter = new GameWinnerConsolePrinter();
         Game game = new Game(dice, winnerPrinter);
-        game.playGame(new Player("Игорь"), new Player("Вася"));
+        game.playGame(new Player("Игорь"), new Player("Игорь"));
     }
 }
