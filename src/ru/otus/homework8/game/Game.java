@@ -7,7 +7,11 @@ public class Game {
 
     public Game(Dice dice, GameWinnerPrinter winnerPrinter) {
         this.dice = dice;
-        this.winnerPrinter = winnerPrinter;
+        if ( winnerPrinter == null){
+            throw new NullPointerException("winner printer cannot be null");
+        }else{
+            this.winnerPrinter = winnerPrinter;
+        }
     }
 
     public void playGame(Player player1, Player player2) {

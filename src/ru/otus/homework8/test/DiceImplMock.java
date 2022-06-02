@@ -2,7 +2,7 @@ package ru.otus.homework8.test;
 
 import ru.otus.homework8.game.Dice;
 
-public class DiceImplSpy implements Dice {
+public class DiceImplMock implements Dice {
     private int count = 0;
 
     @Override
