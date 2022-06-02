@@ -1,5 +1,7 @@
 package ru.otus.assertions;
 
+import ru.otus.homework8.game.Player;
+
 public class Assertions {
     public static void assertTrue(boolean condition, String expectation) {
         if (!condition) {
@@ -21,6 +23,12 @@ public class Assertions {
     public static void assertEquals(String expected, String actual) {
         if (!expected.equals(actual)) {
             throw new AssertionError(String.format("Expected \"%s\" = \"%s\"", expected, actual));
+        }
+    }
+
+    public static void assertEquals(Player expected, Player actual) {
+        if (expected != actual) {
+            throw new AssertionError(String.format("Expected \"%s\" = \"%s\"", expected.toString(), actual.toString()));
         }
     }
 

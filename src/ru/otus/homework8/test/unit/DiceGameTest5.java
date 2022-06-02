@@ -15,7 +15,7 @@ public class DiceGameTest5 {
             Player p1 = new Player("Игорь");
             Player p2 = new Player("Вася");
             game.playGame(p1, p2);
-            Assertions.assertEquals("Победитель: Игорь", winnerPrinter.getWinner());
+            Assertions.assertEquals(p2, winnerPrinter.getWinner());
             System.out.println(scenario + " пройден");
 
         } catch (NullPointerException e) {
