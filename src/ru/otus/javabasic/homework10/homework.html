@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+	
+	  <style>
+        h3 {
+            color: steelblue;
+        }
+        #form{
+            border: 1px solid steelblue;
+            width: 650px;
+            border-collapse: collapse;
+        }
+        form{
+            margin: 15px;
+        }
+        .students-tab {
+            border: 1px solid steelblue;
+            width: 650px;
+            border-collapse: collapse;
+            margin-bottom: 300px;
+           
+        }
+
+        .students-tab tr td {
+            border: 1px solid steelblue;
+        }
+
+        .students-tab-col1 {
+            width: 300px;
+        }
+
+        .students-tab-col2 {
+            width: 120px;
+        }
+
+        .students-tab-col3 {
+            width: 150px;
+        }
+
+        .students-tab-col4 {
+            width: 80px;
+        }
+		
+		label{
+		width: 200px;
+        display: inline-block;
+        margin: 5px;
+		}
+
+        input{
+            width: 258px;
+        }
+
+        #birthDate{
+            width: 261px;
+        }
+        select{
+            width: 266px;
+        }
+        input[type = "submit"]{
+            margin-top: 5px;
+            width: 150px;
+        }
+    </style>
+
+<script>
+
+    function addText(){
+        const myTable = document.getElementById("myTable");
+        const tr = document.createElement("tr");
+
+        const fio = document.getElementById("fioTextBox");
+		const gender = document.getElementById("gender");
+        const dateBirth = document.getElementById("birthDate");
+        const age = Math.round((new Date() - new Date(dateBirth.value)) /1000 / 60 / 60 /24 /365) ;
+        
+        
+
+
+      //let age = (new Date(dateBirth.value));
+        tr.innerHTML = " <td>" + fio.value + "</td> <td>" +gender.value +"</td> <td>" + dateBirth.value + "</td><td>"+ age +"</td>";
+        myTable.appendChild(tr);
+        n += 1;
+        sum += age;
+        avg = Math.round(sum/n);
+        avgElement.innerText = avg;
+        
+		
+    }
+</script>
+</head>
+<body>
+
+<div id="form">
+<form>
+    <div>
+        <label for = "fioTextBox">Имя студента:</label>
+		  
+        <input id = "fioTextBox" name = "fio" type = "text">
+  </div>
+
+    <div>
+        <label for = "birthDate">Дата Рождения:</label>
+        <input id = "birthDate" name = "birthDate" type = "date" value = "2000-01-01">
+    </div>
+
+    <div>
+        <label for ="gender"> Пол:</label>
+            <select id = "gender" name = "gender">
+                <option value = "Мужчина" selected>Мужчина</option>
+                <option value = "Женщина">Женщина</option>
+            </select>
+        
+    </div>
+    <div>
+        <input onclick=addText() type = "button" value = "Добавить">
+    </div>
+</form>
+</div>
+
+<h3>Таблица студентов</h3>
+<table class="students-tab" id="studentsTab">
+    <thead>
+        <tr>
+            <td class="students-tab-col1">Имя студента</td>
+            <td class="students-tab-col2">Пол</td>
+            <td class="students-tab-col3">Дата рождения</td>
+            <td class="students-tab-col4">Возраст</td>
+        </tr>
+    </thead>
+
+    <tbody id="myTable">
+        <tr>
+            <td>Иван Ограномович Штейн</td>
+            <td>Мужчина</td>
+            <td>1974-06-11</td>
+            <td>46</td>
+        </tr>
+        <tr>
+            <td>Гертруда Анатольевна Иванова</td>
+            <td>Женщина</td>
+            <td>1987-01-01</td>
+            <td>34</td>
+        </tr>
+        <tr>
+            <td>Воланд Игоревич Муха</td>
+            <td>Мужчина</td>
+            <td>1974-04-28</td>
+            <td>47</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="4">&nbsp;</td>
+        </tr> <tr>
+            <td colspan="3">Средний возраст студентов</td>
+            <td id="avg">42</td>
+        </tr>
+    </tfoot>
+</table>
+
+<script>
+    const avgElement = document.getElementById("avg");
+    let sum=127 ;
+    let n = 3;
+</script>
+
+</body>
+</html>
